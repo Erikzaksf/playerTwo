@@ -6,4 +6,25 @@ class GamesController < ActionController::Base
   def show
     @game = Game.find(params[:id])
   end
+  def new
+    # authorize
+    # @game.user.admin === true
+    @game = Game.new
+  end
+  def create
+    @game = Game.new(game_params)
+
+    if @game.save
+      flash[:notice] = "Game posted successfully!"
+      redirect_to games_path
+    else
+      flash[:alert] = "Something went wrong!"
+      render :new
+    end
+  end
+
+  private
+    def game_params
+      params.require(:game).permit(:name, :about, :price)
+    end
 end
