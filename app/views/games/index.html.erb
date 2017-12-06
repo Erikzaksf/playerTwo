@@ -1,6 +1,6 @@
 <% if @games.any? %>
   <% @games.each do |game| %>
-    <p><%= game.name %> | <%= number_to_currency game.price %>
+    <p><h3><%= link_to game.name, game_path(game) %></h3> | <%= number_to_currency game.price %>
   <% end %></p>
 <% else %>
   <h3>Sorry, there are no games yet D:</h3>
