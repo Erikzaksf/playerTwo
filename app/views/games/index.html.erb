@@ -1,5 +1,9 @@
-
+<% if user_signed_in? %>
 <h3><%= link_to "Sign Out", '/users/sign_out' %></h3>
+<% else %>
+<h3><%= link_to "Sign In", new_user_session_path %></h3>
+<h3><%= link_to "Sign Up", new_user_registration_path %></h3>
+<% end %>
 
 
   <% if @games.any? %>
@@ -11,7 +15,6 @@
   <% end %>
   <h3><%= link_to "Admin Add a Game", new_game_path %></h3>
 
-  <% if current_user.admin? %>
+  <% if current_user && current_user.admin %>
   <h3><%= link_to "Add a Game", new_game_path %></h3>
   <% end %>
-  
