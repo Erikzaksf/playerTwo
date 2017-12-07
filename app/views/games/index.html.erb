@@ -16,5 +16,5 @@
 
 
   <% if current_user && current_user.admin %>
-  <h3><%= link_to "Add a Game", new_game_path %></h3>
+  <h3><%= link_to "New Game", new_game_path(@game), id: "new_link", remote: true %></h3>
   <% end %>

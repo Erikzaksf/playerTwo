@@ -1,7 +1,7 @@
 class GamesController < ActionController::Base
 
 
-  
+
 
   def index
     @games = Game.all
@@ -17,10 +17,12 @@ class GamesController < ActionController::Base
   end
   def create
     @game = Game.new(game_params)
-
     if @game.save
       flash[:notice] = "Game posted successfully!"
-      redirect_to games_path
+      respond_to do |format|
+       format.html { redirect_to game_path(@game) }
+       format.js
+     end
     else
       flash[:alert] = "Something went wrong!"
       render :new
