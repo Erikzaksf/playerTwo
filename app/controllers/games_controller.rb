@@ -20,9 +20,9 @@ class GamesController < ActionController::Base
     if @game.save
       flash[:notice] = "Game posted successfully!"
       respond_to do |format|
-       format.html { redirect_to game_path(@game) }
-       format.js
-     end
+        format.html { redirect_to game_path(@game) }
+        format.js
+      end
     else
       flash[:alert] = "Something went wrong!"
       render :new

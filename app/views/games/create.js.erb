@@ -1,0 +1,5 @@
+
+$('form').remove();
+$('#new_link').show();
+$('ul p').remove();
+$('#game_list').append('<li><%= @game.name %> | <%= link_to "Edit", edit_list_game_path(@game), :class => "btn btn-default" %> | <%= link_to "Delete", game_path(@game), :data => {:confirm => "Are you sure?", :method => "delete"}, :class => "btn btn-danger" %></li>')

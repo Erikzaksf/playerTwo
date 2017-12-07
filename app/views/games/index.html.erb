@@ -1,11 +1,10 @@
 <% if user_signed_in? %>
-<h3><%= link_to "Sign Out", '/users/sign_out' %></h3>
+<h3><%= link_to "Sign Out", '/users/sign_out' method: :delete %></h3>
 <% else %>
 <h3><%= link_to "Sign In", new_user_session_path %></h3>
 <h3><%= link_to "Sign Up", new_user_registration_path %></h3>
 <% end %>
-
-
+<div class="container" id="game_list">
   <% if @games.any? %>
     <% @games.each do |game| %>
       <p><h3><%= link_to game.name, game_path(game) %></h3> | <%= number_to_currency game.price %>
@@ -13,8 +12,7 @@
   <% else %>
     <h3>Sorry, there are no games yet D:</h3>
   <% end %>
-
-
   <% if current_user && current_user.admin %>
-  <h3><%= link_to "New Game", new_game_path(@game), id: "new_link", remote: true %></h3>
+  <p><%= link_to "New Game", new_game_path, id: "new_link", remote: true %></p>
   <% end %>
+</div>
